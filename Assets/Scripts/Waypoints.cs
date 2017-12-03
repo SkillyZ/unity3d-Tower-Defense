@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaypointsController : MonoBehaviour {
+public class Waypoints : MonoBehaviour {
 
-    public Transform[] positions;
+    public static Transform[] positions;
 
     void Awake()
     {
