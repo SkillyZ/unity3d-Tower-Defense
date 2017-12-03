@@ -26,5 +26,19 @@ public class Enemys : MonoBehaviour {
         {
             index++;
         }
+        if (index > positions.Length - 1)
+        {
+            ReachDestition();
+        }
+    }
+
+    void ReachDestition()
+    {
+        GameObject.Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EnemySpawner.CountEnemyAlive--;
     }
 }
