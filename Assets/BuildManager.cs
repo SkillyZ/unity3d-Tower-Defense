@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour {
 
@@ -10,9 +11,20 @@ public class BuildManager : MonoBehaviour {
     public TurretData standardTurretData;
 
     //表示当前选择的炮台
-    public TurretData selectedTurretData;
+    private TurretData selectedTurretData;
 
     public int money = 1000;
+
+    public Text moneyText;
+
+    public Animator moneyFlicker;
+
+    void ChangeMoney(int change = 0)
+    {
+        this.money += change;
+        moneyText.text = "$" + this.money;
+    }
+
     void Update()
     {
         //如果按下
@@ -34,8 +46,12 @@ public class BuildManager : MonoBehaviour {
                         //可以建造
                         if(money > selectedTurretData.cost)
                         {
-                            money -= selectedTurretData.cost;
+                            ChangeMoney(-selectedTurretData.cost);
                             mapCube.BuildTurret(selectedTurretData.turretPrefab);
+                        }
+                        else
+                        {
+                            moneyFlicker.SetTrigger("Flicker");
                         }
                     }
                     else

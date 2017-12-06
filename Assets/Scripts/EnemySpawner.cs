@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log(12);
+        //Debug.Log(12);
     }
 
     IEnumerator SpawnEnemy()

@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: b27d14ea33d30364d8fd0f07bcafad96
-timeCreated: 1512388070
+timeCreated: 1512552289
 licenseType: Pro
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - turretGo: {instanceID: 0}
+  - buildEffect: {fileID: 1975493832135538, guid: fceb8260092ac9d4bad1ecf8dfbd7c91,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
