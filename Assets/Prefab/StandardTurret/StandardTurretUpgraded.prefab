@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4103508984438166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StandardTurretUpgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a8ffd7bb5105d0742893854dfc542df7, type: 2}
+  - {fileID: 2100000, guid: 4dd72481ce4edfa40821df8f174001b1, type: 2}
   - {fileID: 2100000, guid: 3373cb8ba9c438c458d1172df2850e17, type: 2}
   - {fileID: 2100000, guid: 4dd72481ce4edfa40821df8f174001b1, type: 2}
   m_StaticBatchInfo:
