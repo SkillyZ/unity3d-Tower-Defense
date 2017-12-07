@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d2fa0b75ee261469cf00856c66748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  speed: 40
+  damage: 40
+  speed: 60
   explosionEffectPrefab: {fileID: 1086603975019150, guid: 333e12bb71b0f354f84b4bf7096d0303,
     type: 2}
   distanceArriveTarget: 1.2

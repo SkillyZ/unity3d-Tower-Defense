@@ -6,6 +6,8 @@ public class Turret : MonoBehaviour {
 
     public List<GameObject> enemys = new List<GameObject>();
 
+    public Transform head;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
@@ -40,6 +42,13 @@ public class Turret : MonoBehaviour {
         {
             timer = 0;
             Attack();
+        }
+
+        if (enemys.Count > 0 && enemys[0] != null)
+        {
+            Vector3 targetPosition = enemys[0].transform.position;
+            targetPosition.y = head.position.y;
+            head.LookAt(targetPosition);
         }
     }
 
