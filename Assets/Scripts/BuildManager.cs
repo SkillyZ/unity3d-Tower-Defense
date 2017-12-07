@@ -41,7 +41,7 @@ public class BuildManager : MonoBehaviour {
                 {
                     //GameObject gameObject = hit.collider.gameObject;
                     MapCube mapCube = hit.collider.GetComponent<MapCube>();
-                    if (mapCube.turretGo == null)
+                    if (selectedTurretData != null && mapCube.turretGo == null)
                     {
                         //可以建造
                         if(money > selectedTurretData.cost)
@@ -57,6 +57,10 @@ public class BuildManager : MonoBehaviour {
                     else
                     {
                         //升级
+                        if (mapCube.turretGo != null)
+                        {
+
+                        }
                     }
                 }
             }

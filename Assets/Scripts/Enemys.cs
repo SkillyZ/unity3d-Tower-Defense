@@ -7,6 +7,8 @@ public class Enemys : MonoBehaviour {
     private Transform[] positions;
     public float speed = 10;
     private int index = 0;
+    public int HP = 150;
+    public GameObject explotionEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -41,4 +43,22 @@ public class Enemys : MonoBehaviour {
     {
         EnemySpawner.CountEnemyAlive--;
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (HP < 0) return;
+        HP -= damage;
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        GameObject effect = GameObject.Instantiate(explotionEffect, transform.position, transform.rotation);
+        Destroy(effect, 1.5f);
+        Destroy(this.gameObject);
+    }
+
 }

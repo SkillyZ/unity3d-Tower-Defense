@@ -246,7 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemys: []
   attackRateTime: 1
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 1067605756133648, guid: a0b95e3ed1830a94883c6438fd61cf22,
+    type: 2}
   firePosition: {fileID: 4618388988593092}
 --- !u!135 &135571047413704742
 SphereCollider:

@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  HP: 150
+  explotionEffect: {fileID: 1086603975019150, guid: 2403bb731830385448dd900b2a48c75b,
+    type: 2}
 --- !u!135 &135706609685530454
 SphereCollider:
   m_ObjectHideFlags: 1
