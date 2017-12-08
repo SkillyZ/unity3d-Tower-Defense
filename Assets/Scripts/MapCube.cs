@@ -4,22 +4,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MapCube : MonoBehaviour {
-
     [HideInInspector]
     public GameObject turretGo;
+    [HideInInspector]
+    public bool isUpgraed = false;
 
     public GameObject buildEffect;
 
-    private Renderer renderer;
+    private new Renderer renderer;
+
+    private TurretData turretData;
 
     private void Start()
     {
         this.renderer = GetComponent<Renderer>();
     }
 
-    public void BuildTurret(GameObject turretPrefab)
+    public void BuildTurret(TurretData turretData)
     {
-        turretGo = GameObject.Instantiate(turretPrefab, transform.position, Quaternion.identity);
+        this.turretData = turretData;
+        isUpgraed = false;
+        turretGo = GameObject.Instantiate(turretData.turretPrefab, transform.position, Quaternion.identity);
         GameObject buildObject = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
         Destroy(buildObject, 1);
     }
@@ -38,6 +43,16 @@ public class MapCube : MonoBehaviour {
         {
             renderer.material.color = Color.white;
         }
+    }
+
+    public void UpgradTurret()
+    {
+
+    }
+
+    public void DestoryTurret()
+    {
+
     }
 
 }

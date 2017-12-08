@@ -10,8 +10,10 @@ public class BuildManager : MonoBehaviour {
     public TurretData missileTurretData;
     public TurretData standardTurretData;
 
-    //表示当前选择的炮台
+    //表示当前选择的炮台 UI
     private TurretData selectedTurretData;
+
+    private MapCube selectedMapCube;
 
     public int money = 1000;
 
@@ -19,10 +21,20 @@ public class BuildManager : MonoBehaviour {
 
     public Animator moneyFlicker;
 
+    public GameObject upgradeCanvers;
+    public Button upgradeButton;
+
+    private Animator upgradeAnimatorCanvans;
+
     void ChangeMoney(int change = 0)
     {
         this.money += change;
         moneyText.text = "$" + this.money;
+    }
+
+    private void Start()
+    {
+        upgradeAnimatorCanvans = upgradeCanvers.GetComponent<Animator>();
     }
 
     void Update()
@@ -47,7 +59,7 @@ public class BuildManager : MonoBehaviour {
                         if(money > selectedTurretData.cost)
                         {
                             ChangeMoney(-selectedTurretData.cost);
-                            mapCube.BuildTurret(selectedTurretData.turretPrefab);
+                            mapCube.BuildTurret(selectedTurretData);
                         }
                         else
                         {
@@ -59,8 +71,17 @@ public class BuildManager : MonoBehaviour {
                         //升级
                         if (mapCube.turretGo != null)
                         {
+                            if (mapCube == selectedMapCube && upgradeCanvers.activeInHierarchy)
+                            {
+                                StartCoroutine(HideUpgradeUI());
+                            } else
+                            {
+                                ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraed);
+                            }
 
+                            selectedMapCube = mapCube;
                         }
+
                     }
                 }
             }
@@ -91,4 +112,36 @@ public class BuildManager : MonoBehaviour {
             this.selectedTurretData = this.standardTurretData;
         }
     }
+
+    void ShowUpgradeUI(Vector3 pos ,bool isDisableUpgrade = false)
+    {
+        StopCoroutine("HideUpgradeUI"); //HideUpgradeUI()
+        upgradeCanvers.SetActive(false);
+        Vector3 poss = new Vector3(pos.x, pos.y + 3.4f, pos.z);
+        upgradeCanvers.SetActive(true);
+        upgradeCanvers.transform.position = poss;
+        upgradeButton.interactable = !isDisableUpgrade;
+    }
+
+    IEnumerator HideUpgradeUI()
+    {
+        upgradeAnimatorCanvans.SetTrigger("Hide");
+
+        yield return new WaitForSeconds(0.5f);
+        upgradeCanvers.SetActive(false);
+    }
+
+    public void OnUpgradeButtonDown()
+    {
+        //mapCube.isUpgraed = true;
+        selectedMapCube.UpgradTurret();
+        StartCoroutine(HideUpgradeUI());
+    }
+
+    public void OnDestryButtonDown()
+    {
+        selectedMapCube.DestoryTurret();
+        StartCoroutine(HideUpgradeUI());
+    }
+
 }

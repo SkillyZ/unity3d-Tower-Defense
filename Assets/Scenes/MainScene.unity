@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 79466104}
   - component: {fileID: 79466103}
   - component: {fileID: 79466102}
+  - component: {fileID: 79466106}
   m_Layer: 5
   m_Name: UpgradedCanvas
   m_TagString: Untagged
@@ -704,7 +705,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79466101}
   m_LocalRotation: {x: 0.21300477, y: -0, z: -0, w: 0.97705114}
-  m_LocalPosition: {x: -0.020000458, y: 3.296904, z: 0.014170563}
+  m_LocalPosition: {x: -0.020000458, y: 3.35, z: 0.04}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 1375125487}
@@ -714,9 +715,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 24.597002, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.02, y: 3.296904}
+  m_AnchoredPosition: {x: -0.02, y: 3.35}
   m_SizeDelta: {x: 45.165, y: 16.115}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &79466106
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 79466101}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34fd4c13b2471014396daa15626db265, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &90463752
 Prefab:
   m_ObjectHideFlags: 0
@@ -3308,7 +3326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16911763, g: 0.16911763, b: 0.16911763, a: 1}
+  m_Color: {r: 0.102941155, g: 1, b: 0.2204867, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5530,6 +5548,8 @@ MonoBehaviour:
   money: 1000
   moneyText: {fileID: 601585691}
   moneyFlicker: {fileID: 601585693}
+  upgradeCanvers: {fileID: 79466101}
+  upgradeButton: {fileID: 1375125488}
 --- !u!1001 &882149655
 Prefab:
   m_ObjectHideFlags: 0
@@ -8379,7 +8399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.53000003, y: 1}
-  m_AnchoredPosition: {x: 7.9272556, y: -0.3743589}
+  m_AnchoredPosition: {x: 7.9272556, y: -0.37435913}
   m_SizeDelta: {x: 22.46934, y: 0.61875784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375125488
@@ -8420,7 +8440,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1375125489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 870664268}
+        m_MethodName: OnUpgradeButtonDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1375125489
@@ -11022,7 +11053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6885686, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.46, y: -0.37350488}
+  m_AnchoredPosition: {x: -15.46, y: -0.37350464}
   m_SizeDelta: {x: 32.352497, y: 0.6170459}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890199360
@@ -11063,7 +11094,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890199361}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 870664268}
+        m_MethodName: OnDestryButtonDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1890199361
@@ -12686,7 +12728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.8308824, g: 0.15273573, b: 0.15273573, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
