@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemys : MonoBehaviour {
 
@@ -9,10 +10,13 @@ public class Enemys : MonoBehaviour {
     private int index = 0;
     public int HP = 150;
     public GameObject explotionEffect;
-
+    private Slider hpSlider;
+    private int totalHp;
 	// Use this for initialization
 	void Start () {
         positions = Waypoints.positions;
+        totalHp = HP;
+        hpSlider = GetComponentInChildren<Slider>();
 	}
 	
 	// Update is called once per frame
@@ -48,6 +52,7 @@ public class Enemys : MonoBehaviour {
     {
         if (HP < 0) return;
         HP -= damage;
+        hpSlider.value = (float)HP / totalHp;
         if (HP <= 0)
         {
             Die();
