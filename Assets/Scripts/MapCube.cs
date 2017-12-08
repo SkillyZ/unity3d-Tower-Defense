@@ -8,12 +8,12 @@ public class MapCube : MonoBehaviour {
     public GameObject turretGo;
     [HideInInspector]
     public bool isUpgraed = false;
+    [HideInInspector]
+    public TurretData turretData;
 
     public GameObject buildEffect;
 
     private new Renderer renderer;
-
-    private TurretData turretData;
 
     private void Start()
     {

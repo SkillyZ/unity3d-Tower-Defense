@@ -31,9 +31,11 @@ public class Turret : MonoBehaviour {
     public Transform firePosition;
 
     public bool isLaser = false;
-    public int damgeRate = 70;
+    public float damgeRate = 40f;
 
     public LineRenderer laserRenderer;
+
+    public GameObject laserEffect;
 
     void Start()
     {
@@ -66,6 +68,7 @@ public class Turret : MonoBehaviour {
                 AttackLaser();
             } else
             {
+                laserEffect.SetActive(false);
                 laserRenderer.enabled = false;
             }
             
@@ -82,8 +85,13 @@ public class Turret : MonoBehaviour {
         if (enemys.Count > 0)
         {
             if (laserRenderer.enabled == false) laserRenderer.enabled = true;
+            laserEffect.SetActive(true);
             laserRenderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
-
+            enemys[0].GetComponent<Enemys>().TakeDamage(damgeRate * Time.deltaTime);
+            laserEffect.transform.position = enemys[0].transform.position;
+            Vector3 pos = transform.position;
+            pos.y = enemys[0].transform.position.y;
+            laserEffect.transform.LookAt(pos);
         }
     }
 
@@ -97,7 +105,8 @@ public class Turret : MonoBehaviour {
         if (enemys.Count > 0)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
-            bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform);
+
+            enemys[0].GetComponent<Bullet>().SetTarget(enemys[0].transform);
         }
     }
 

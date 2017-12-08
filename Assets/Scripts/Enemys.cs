@@ -8,10 +8,10 @@ public class Enemys : MonoBehaviour {
     private Transform[] positions;
     public float speed = 10;
     private int index = 0;
-    public int HP = 150;
+    public float HP = 150;
     public GameObject explotionEffect;
     private Slider hpSlider;
-    private int totalHp;
+    private float totalHp;
 	// Use this for initialization
 	void Start () {
         positions = Waypoints.positions;
@@ -48,7 +48,7 @@ public class Enemys : MonoBehaviour {
         EnemySpawner.CountEnemyAlive--;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (HP < 0) return;
         HP -= damage;
