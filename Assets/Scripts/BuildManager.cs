@@ -74,7 +74,8 @@ public class BuildManager : MonoBehaviour {
                             if (mapCube == selectedMapCube && upgradeCanvers.activeInHierarchy)
                             {
                                 StartCoroutine(HideUpgradeUI());
-                            } else
+                            }
+                            else
                             {
                                 ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraed);
                             }

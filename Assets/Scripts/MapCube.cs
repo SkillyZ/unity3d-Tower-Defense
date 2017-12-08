@@ -47,11 +47,22 @@ public class MapCube : MonoBehaviour {
 
     public void UpgradTurret()
     {
-
+        if (isUpgraed == true) return;
+        isUpgraed = true;
+        Destroy(turretGo);
+        turretGo = GameObject.Instantiate(turretData.turretUpgradedPrefab, transform.position, Quaternion.identity);
+        GameObject buildObject = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
+        Destroy(buildObject, 1);
     }
 
     public void DestoryTurret()
     {
+        Destroy(turretGo);
+        isUpgraed = false;
+        turretData = null;
+        turretGo = null;
+        GameObject buildObject = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
+        Destroy(buildObject, 1);
 
     }
 

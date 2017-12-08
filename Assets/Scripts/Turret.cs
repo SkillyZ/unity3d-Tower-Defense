@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
-    public List<GameObject> enemys = new List<GameObject>();
+    private List<GameObject> enemys = new List<GameObject>();
 
     public Transform head;
 
@@ -30,6 +30,11 @@ public class Turret : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform firePosition;
 
+    public bool isLaser = false;
+    public int damgeRate = 70;
+
+    public LineRenderer laserRenderer;
+
     void Start()
     {
         timer = attackRateTime;
@@ -37,18 +42,48 @@ public class Turret : MonoBehaviour {
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (enemys.Count > 0 && timer >= attackRateTime)
-        {
-            timer = 0;
-            Attack();
-        }
 
         if (enemys.Count > 0 && enemys[0] != null)
         {
             Vector3 targetPosition = enemys[0].transform.position;
             targetPosition.y = head.position.y;
             head.LookAt(targetPosition);
+        }
+
+        if (!isLaser)
+        {
+            timer += Time.deltaTime;
+            if (enemys.Count > 0 && timer >= attackRateTime)
+            {
+                timer = 0;
+                Attack();
+            }
+        }
+        else
+        {
+            if (enemys.Count > 0)
+            {
+                AttackLaser();
+            } else
+            {
+                laserRenderer.enabled = false;
+            }
+            
+        }
+    }
+
+    void AttackLaser()
+    {
+        if (enemys[0] == null)
+        {
+            updateEnemy();
+        }
+
+        if (enemys.Count > 0)
+        {
+            if (laserRenderer.enabled == false) laserRenderer.enabled = true;
+            laserRenderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
+
         }
     }
 
