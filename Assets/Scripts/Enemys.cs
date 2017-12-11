@@ -38,9 +38,11 @@ public class Enemys : MonoBehaviour {
         }
     }
 
+    //到达终点
     void ReachDestition()
     {
         GameObject.Destroy(this.gameObject);
+        GameManager.Instance.Failed();
     }
 
     private void OnDestroy()
